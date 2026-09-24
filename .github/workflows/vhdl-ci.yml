@@ -1,0 +1,35 @@
+﻿name: VHDL CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  simulate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install GHDL
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ghdl
+
+      - name: Analyze UART RTL and testbench
+        run: |
+          ghdl -a --std=08 rtl/uart_tx.vhd
+          ghdl -a --std=08 rtl/uart_rx.vhd
+          ghdl -a --std=08 sim/tb_uart_loopback.vhd
+
+      - name: Elaborate testbench
+        run: ghdl -e --std=08 tb_uart_loopback
+
+      - name: Run UART loopback simulation
+        run: ghdl -r --std=08 tb_uart_loopback --assert-level=error
