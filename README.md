@@ -1,8 +1,10 @@
-# FPGA UART Command Controller
+﻿# FPGA UART Command Controller
+
+[![VHDL CI](https://github.com/alanbadenas/fpga-uart-command-controller/actions/workflows/vhdl-ci.yml/badge.svg)](https://github.com/alanbadenas/fpga-uart-command-controller/actions/workflows/vhdl-ci.yml)
 
 Academic Master's coursework project demonstrating a compact **VHDL control path for an Intel/Altera Cyclone 10 LP FPGA**, including custom UART TX/RX logic, a command FSM, ROM-backed error samples, ACK handling, board I/O, and a host-side serial utility.
 
-> **Portfolio classification:** academic / coursework prototype — not commercial experience.
+> **Portfolio classification:** academic / coursework prototype â€” not commercial experience.
 
 ## What this project demonstrates
 
@@ -76,6 +78,11 @@ ghdl -e --std=08 tb_uart_loopback
 ghdl -r --std=08 tb_uart_loopback
 ```
 
+## Automated checks
+
+GitHub Actions installs GHDL, analyzes the authored UART RTL, elaborates the VHDL-2008 loopback testbench, and executes the simulation on every push and pull request.
+
 ## Protocol
 
 See [`docs/protocol.md`](docs/protocol.md). The current one-byte protocol is intentionally simple and academic; a production design would add framing, timeout/retry logic, integrity checks, and stronger fault handling.
+
