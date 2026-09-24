@@ -1,0 +1,39 @@
+# Quartus generated output / databases
+db/
+incremental_db/
+output_files/
+simulation/
+simulation__/
+greybox_tmp/
+.qsys_edit/
+*.qws
+*.sopcinfo
+*.rpt
+*.summary
+*.smsg
+*.sof
+*.pof
+*.jdi
+*.sld
+*.wlf
+*.cr.mti
+
+# Generated IP output
+uart/
+serial/
+tse/
+tsenew/
+eth_tse_0_testbench/
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Backups / editor
+*.bak
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
